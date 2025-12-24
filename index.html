@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>Merry Christmas ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Merry Christmas Love</title>
 
 <style>
+/* RESET */
 *{
   margin:0;
   padding:0;
@@ -13,175 +14,158 @@
   font-family:'Poppins',sans-serif;
 }
 
+/* BACKGROUND MOTION */
 body{
   height:100vh;
   overflow:hidden;
-  background:linear-gradient(135deg,#ff3c6f,#ff7a8a);
+  background:linear-gradient(-45deg,#ff416c,#ff4b2b,#ff758c,#ff7eb3);
+  background-size:400% 400%;
+  animation:bgMove 10s ease infinite;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* SNOW */
+.snow{
+  position:fixed;
+  top:-10px;
+  color:white;
+  animation:snowFall linear infinite;
+  pointer-events:none;
+}
+
+@keyframes snowFall{
+  to{
+    transform:translateY(110vh);
+  }
 }
 
 /* PAGES */
 .page{
   position:absolute;
-  width:100%;
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  width:85%;
+  max-width:360px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(14px);
+  border-radius:24px;
+  padding:35px 25px;
   text-align:center;
-  color:#fff;
-  padding:20px;
-  transition:1s;
-  transform-origin:left;
-  background:linear-gradient(135deg,#ff4b6e,#ff8fa3);
-}
-
-.hidden{
-  transform:rotateY(-90deg);
+  transform:rotateY(90deg);
   opacity:0;
-  pointer-events:none;
+  transition:1s;
 }
 
-.active{
-  transform:rotateY(0);
+.page.active{
+  transform:rotateY(0deg);
   opacity:1;
 }
 
-/* CARD */
-.card{
-  background:rgba(255,255,255,0.22);
-  padding:30px;
-  border-radius:22px;
-  backdrop-filter:blur(12px);
-  box-shadow:0 20px 40px rgba(0,0,0,0.2);
-  animation:zoom 1s ease;
+.hidden{
+  display:none;
 }
 
-@keyframes zoom{
-  from{transform:scale(0.6);opacity:0}
-  to{transform:scale(1);opacity:1}
-}
-
+/* TEXT */
 h1{
-  font-size:32px;
+  font-size:34px;
   margin-bottom:15px;
 }
 
+h2{
+  font-size:26px;
+  margin-bottom:10px;
+}
+
 p{
-  font-size:18px;
-  margin:10px 0;
+  font-size:16px;
+  opacity:0.9;
 }
 
 /* BUTTON */
-.btn{
-  margin-top:20px;
-  padding:14px 32px;
+button{
+  margin-top:25px;
+  padding:14px 30px;
   border:none;
   border-radius:30px;
-  background:#fff;
-  color:#ff3c6f;
-  font-weight:bold;
+  background:white;
+  color:#ff416c;
   font-size:16px;
   cursor:pointer;
   transition:0.3s;
 }
 
-.btn:active{
-  transform:scale(0.9);
+button:hover{
+  transform:scale(1.08);
 }
 
-/* HEART FLOAT */
+/* HEART */
 .heart{
-  position:absolute;
-  bottom:-20px;
-  animation:float 6s linear infinite;
+  font-size:42px;
+  animation:beat 1.2s infinite;
 }
 
-@keyframes float{
-  0%{transform:translateY(0);opacity:1}
-  100%{transform:translateY(-120vh);opacity:0}
-}
-
-/* SNOW */
-.snow{
-  position:absolute;
-  top:-10px;
-  color:white;
-  font-size:14px;
-  opacity:0.9;
-  animation:snowfall linear infinite;
-}
-
-@keyframes snowfall{
-  to{
-    transform:translateY(110vh);
-  }
+@keyframes beat{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.3);}
 }
 </style>
 </head>
 
 <body>
 
+<!-- SNOW -->
+<script>
+for(let i=0;i<35;i++){
+  let s=document.createElement("div");
+  s.className="snow";
+  s.innerHTML="❄️";
+  s.style.left=Math.random()*100+"vw";
+  s.style.fontSize=(Math.random()*12+10)+"px";
+  s.style.animationDuration=(Math.random()*5+5)+"s";
+  document.body.appendChild(s);
+}
+</script>
+
 <!-- PAGE 1 -->
 <div class="page active" id="page1">
-  <div class="card">
-    <h1>🎄 Merry Christmas 🎄</h1>
-    <p>My Beautiful Love ❤️</p>
-    <button class="btn" onclick="nextPage(2)">Tap to Surprise 🎁</button>
-  </div>
+  <h1>Merry Christmas 🎄</h1>
+  <div class="heart">❤️</div>
+  <button onclick="nextPage(2)">Tap to Surprise 🎁</button>
 </div>
 
 <!-- PAGE 2 -->
 <div class="page hidden" id="page2">
-  <div class="card">
-    <h1>Shilpa ❤️ Bishal</h1>
-    <p>You are my warm hug in every cold winter ❄️</p>
-    <p>My forever Christmas miracle ✨</p>
-    <button class="btn" onclick="nextPage(3)">One More 💖</button>
-  </div>
+  <h2>Shilpa ❤️ Bishal</h2>
+  <p>You are my forever Christmas ✨</p>
+  <button onclick="nextPage(3)">Next 💫</button>
 </div>
 
 <!-- PAGE 3 -->
 <div class="page hidden" id="page3">
-  <div class="card">
-    <h1>Forever Promise ♾️</h1>
-    <p>I choose you</p>
-    <p>Today, Tomorrow & Always ❤️</p>
-    <p style="margin-top:12px;">— Bishal</p>
-  </div>
+  <h2>My Promise 💍</h2>
+  <p>Every winter, every smile, every heartbeat…  
+  I choose you ❤️</p>
+  <button onclick="nextPage(1)">Replay 🔁</button>
 </div>
 
 <script>
 function nextPage(n){
-  document.querySelectorAll('.page').forEach(p=>{
-    p.classList.add('hidden');
-    p.classList.remove('active');
+  document.querySelectorAll(".page").forEach(p=>{
+    p.classList.remove("active");
+    setTimeout(()=>p.classList.add("hidden"),600);
   });
-  document.getElementById('page'+n).classList.remove('hidden');
-  document.getElementById('page'+n).classList.add('active');
+
+  const next=document.getElementById("page"+n);
+  next.classList.remove("hidden");
+  setTimeout(()=>next.classList.add("active"),50);
 }
-
-/* Floating hearts */
-setInterval(()=>{
-  let h=document.createElement('div');
-  h.className='heart';
-  h.innerHTML='❤️';
-  h.style.left=Math.random()*100+'vw';
-  h.style.fontSize=(16+Math.random()*20)+'px';
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
-},600);
-
-/* Snow effect */
-setInterval(()=>{
-  let s=document.createElement('div');
-  s.className='snow';
-  s.innerHTML='❄️';
-  s.style.left=Math.random()*100+'vw';
-  s.style.fontSize=(10+Math.random()*10)+'px';
-  s.style.animationDuration=(5+Math.random()*5)+'s';
-  document.body.appendChild(s);
-  setTimeout(()=>s.remove(),10000);
-},300);
 </script>
 
 </body>
