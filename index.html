@@ -1,188 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Shilpa ❤️ Bishal | Christmas</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
-}
-
-/* PREMIUM BACKGROUND */
-body{
-  height:100vh;
-  overflow:hidden;
-  background:radial-gradient(circle at top,#ff9a9e,#fad0c4,#fad0c4,#ffdde1);
-  animation:bgShift 12s infinite alternate;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:white;
-}
-
-@keyframes bgShift{
-  0%{filter:hue-rotate(0deg);}
-  100%{filter:hue-rotate(40deg);}
-}
-
-/* PARTICLE GLOW */
-.glow{
-  position:fixed;
-  width:6px;
-  height:6px;
-  background:white;
-  border-radius:50%;
-  opacity:0.6;
-  animation:float 10s linear infinite;
-}
-
-@keyframes float{
-  from{transform:translateY(100vh) scale(0);}
-  to{transform:translateY(-10vh) scale(1);}
-}
-
-/* GLASS CARD */
-.page{
-  position:absolute;
-  width:88%;
-  max-width:380px;
-  padding:38px 28px;
-  border-radius:28px;
-  background:linear-gradient(135deg,
-    rgba(255,255,255,0.35),
-    rgba(255,255,255,0.1));
-  backdrop-filter:blur(18px);
-  box-shadow:
-    0 20px 40px rgba(0,0,0,0.25),
-    inset 0 0 30px rgba(255,255,255,0.3);
-  text-align:center;
-  transform:rotateY(90deg) scale(0.9);
-  opacity:0;
-  transition:1.1s cubic-bezier(.4,0,.2,1);
-}
-
-.page.active{
-  transform:rotateY(0deg) scale(1);
-  opacity:1;
-}
-
-.hidden{display:none}
-
-/* TEXT */
-h1{font-size:36px;margin-bottom:15px;}
-h2{font-size:26px;margin-bottom:12px;}
-p{font-size:16px;opacity:0.95;line-height:1.5}
-
-/* HEART */
-.heart{
-  font-size:46px;
-  margin:10px 0;
-  animation:beat 1.2s infinite;
-}
-
-@keyframes beat{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.35);}
-}
-
-/* BUTTON */
-button{
-  margin-top:26px;
-  padding:14px 32px;
-  border:none;
-  border-radius:35px;
-  background:linear-gradient(135deg,#ff416c,#ff4b2b);
-  color:white;
-  font-size:16px;
-  box-shadow:0 10px 25px rgba(255,65,108,0.5);
-  cursor:pointer;
-  transition:0.35s;
-}
-
-button:hover{
-  transform:scale(1.12);
-  box-shadow:0 15px 35px rgba(255,75,43,0.6);
-}
-
-/* SNOW */
-.snow{
-  position:fixed;
-  top:-10px;
-  pointer-events:none;
-  animation:snowFall linear infinite;
-}
-
-@keyframes snowFall{
-  to{transform:translateY(110vh);}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Merry Christmas 🎄</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <div class="container">
+    <h1>Merry Christmas 🎄</h1>
+    <p>
+      May your Christmas be filled with warmth, soft lights, cozy moments,
+      and beautiful memories that stay forever.
+    </p>
+    <a href="notes.html" class="button">Open Notes 💌</a>
+    <button id="music-toggle" class="button music-toggle" aria-pressed="false">🔈 Music OFF</button>
+  </div>
 
-<!-- SNOW -->
-<script>
-for(let i=0;i<30;i++){
-  let s=document.createElement("div");
-  s.className="snow";
-  s.innerHTML="❄️";
-  s.style.left=Math.random()*100+"vw";
-  s.style.fontSize=(Math.random()*14+10)+"px";
-  s.style.animationDuration=(Math.random()*6+6)+"s";
-  document.body.appendChild(s);
-}
-</script>
-
-<!-- GLOW PARTICLES -->
-<script>
-for(let i=0;i<25;i++){
-  let g=document.createElement("div");
-  g.className="glow";
-  g.style.left=Math.random()*100+"vw";
-  g.style.animationDuration=(Math.random()*6+6)+"s";
-  document.body.appendChild(g);
-}
-</script>
-
-<!-- PAGE 1 -->
-<div class="page active" id="page1">
-  <h1>Merry Christmas 🎄</h1>
-  <div class="heart">❤️</div>
-  <button onclick="go(2)">Tap to Surprise 🎁</button>
-</div>
-
-<!-- PAGE 2 -->
-<div class="page hidden" id="page2">
-  <h2>Shilpa ❤️ Bishal</h2>
-  <p>You are my warmth in every winter,<br>
-     my magic in every Christmas ✨</p>
-  <button onclick="go(3)">Next 💫</button>
-</div>
-
-<!-- PAGE 3 -->
-<div class="page hidden" id="page3">
-  <h2>Forever Promise 💍</h2>
-  <p>No matter the season,<br>
-     my heart chooses you… always ❤️</p>
-  <button onclick="go(1)">Replay 🔁</button>
-</div>
-
-<script>
-function go(n){
-  document.querySelectorAll(".page").forEach(p=>{
-    p.classList.remove("active");
-    setTimeout(()=>p.classList.add("hidden"),700);
-  });
-  let next=document.getElementById("page"+n);
-  next.classList.remove("hidden");
-  setTimeout(()=>next.classList.add("active"),50);
-}
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
